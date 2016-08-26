@@ -1,0 +1,1012 @@
+; prepare animation of witch's eyes
+
+; Blink scenarii
+SCENARIO_BLINK01	EQU 120
+SCENARIO_BLINK02	EQU SCENARIO_BLINK01+2
+SCENARIO_BLINK03	EQU SCENARIO_BLINK02+7
+SCENARIO_BLINK04	EQU SCENARIO_BLINK03+3
+SCENARIO_BLINK05	EQU SCENARIO_BLINK04+1
+
+.blink_scenarii
+dw -SCENARIO_BLINK01:dw closeEye1
+dw -SCENARIO_BLINK02:dw closeEye2
+dw -SCENARIO_BLINK03:dw closeEye3
+dw -SCENARIO_BLINK04:dw closeEye4
+dw -SCENARIO_BLINK05:dw closeEye5
+
+.initBeautyWink
+	; init callback
+	ld hl,closeEyeBeauty1
+	ld (blink_scenarii+2),hl
+	ld hl,closeEyeBeauty2
+	ld (blink_scenarii+6),hl
+	ld hl,closeEyeBeauty3
+	ld (blink_scenarii+10),hl
+	ld hl,closeEyeBeauty4
+	ld (blink_scenarii+14),hl
+
+	; init tempo
+	ld hl,0
+	ld (blinkEyes+2),hl
+	ld hl,-SCENARIO_BLINK01
+	ld (blinkTestEyes+1),hl
+
+	; current wink scenario
+	ld hl,closeEyeBeauty1
+	ld (currentBlinkScenario+1),hl
+
+	; reset nextscen mechanism
+	ld hl,blink_scenarii+4
+	ld (nextBlinkScenario+1),hl
+
+	; enable blinkEyes
+	if WITCH_EYE_ENABLED
+		xor a
+		ld (blinkEyes),a
+	endif
+	ret
+
+.blinkEyes
+	ret	; enable/disable
+
+	ld de,SCENARIO_BLINK03-1
+	inc de
+	ld (blinkEyes+2),de
+
+.blinkTestEyes
+	ld hl,-SCENARIO_BLINK03	; first scenario should be hard coded
+	add hl,de
+	ret nc	; not finished
+
+	.currentBlinkScenario
+	call closeEye3
+
+	push af
+	; if the scenario is finished we should 
+	; - set next call
+	; - prepare the next test
+	.nextBlinkScenario
+	ld hl,blink_scenarii+4+8
+	ld de,blinkTestEyes+1
+	ldi:ldi
+	ld de,currentBlinkScenario+1
+	ldi
+	ldi
+	ld (nextBlinkScenario+1),hl	
+	pop af
+
+	ret
+
+; Rollback scenarii
+.closeEye5
+	ld hl,0
+	ld (blinkEyes+2),hl
+	ld hl,-SCENARIO_BLINK01
+	ld (blinkTestEyes+1),hl
+	ld hl,blink_scenarii;+4
+	ld (nextBlinkScenario+1),hl
+	ret
+
+.closeEye1
+ld a,#f3
+ld (#4276),a
+ld a,#b7
+ld (#42d6),a
+ld hl,#4fdb
+ld (#42d8),hl
+ld hl,#db4f
+ld (#4333),hl
+ld hl,#3ff3
+ld (#4335),hl
+ld hl,#7bff
+ld (#4337),hl
+ld a,#8b
+ld (#4339),a
+ld a,#3c
+ld (#4392),a
+ld hl,#db6d
+ld (#43e3),hl
+ld hl,#8f8f
+ld (#43e5),hl
+ld a,#0b
+ld (#43e7),a
+ld a,#b7
+ld (#4a76),a
+ld a,#29
+ld (#4ad3),a
+ld hl,#e74f
+ld (#4b33),hl
+ld hl,#7fb7
+ld (#4b35),hl
+ld hl,#e7bf
+ld (#4b37),hl
+ld a,#12
+ld (#4b39),a
+ld hl,#e76d
+ld (#4be3),hl
+ld hl,#0fcf
+ld (#4be5),hl
+ld a,#56
+ld (#4be7),a
+ld a,#cf
+ld (#5278),a
+ld hl,#3fdb
+ld (#52d5),hl
+ld a,#db
+ld (#52d8),a
+ld hl,#db4f
+ld (#5333),hl
+ld hl,#3ff3
+ld (#5335),hl
+ld hl,#8b7b
+ld (#5337),hl
+ld a,#24
+ld (#5339),a
+ld hl,#cf6d
+ld (#53e3),hl
+ld hl,#8f8f
+ld (#53e5),hl
+ld hl,#bc0b
+ld (#53e7),hl
+ld hl,#b7b7
+ld (#5a76),hl
+ld a,#9e
+ld (#5a79),a
+ld hl,#cf29
+ld (#5ad3),hl
+ld hl,#7fb7
+ld (#5ad5),hl
+ld hl,#e7bf
+ld (#5ad7),hl
+ld hl,#e74f
+ld (#5b33),hl
+ld hl,#b7b7
+ld (#5b35),hl
+ld hl,#748b
+ld (#5b37),hl
+ld hl,#8f8d
+ld (#5be3),hl
+ld hl,#0fcf
+ld (#5be5),hl
+ld hl,#1656
+ld (#5be7),hl
+ld hl,#7bf3
+ld (#6276),hl
+ld hl,#3ff3
+ld (#62d5),hl
+ld hl,#7bbf
+ld (#62d7),hl
+ld hl,#db47
+ld (#6333),hl
+ld hl,#8bdb
+ld (#6335),hl
+ld a,#30
+ld (#6337),a
+ld a,#0b
+ld (#6386),a
+ld hl,#4f1c
+ld (#63e3),hl
+ld hl,#8b8f
+ld (#63e5),hl
+ld hl,#b8a9
+ld (#63e7),hl
+ld a,#8c
+ld (#63e9),a
+ld a,#ff
+ld (#65d3),a
+ld hl,#b7e7
+ld (#6a75),hl
+ld hl,#e7f7
+ld (#6a77),hl
+ld a,#8b
+ld (#6a79),a
+ld hl,#cf0f
+ld (#6ad3),hl
+ld hl,#7fb7
+ld (#6ad5),hl
+ld hl,#e7bf
+ld (#6ad7),hl
+ld a,#a3
+ld (#6ad9),a
+ld hl,#cf07
+ld (#6b33),hl
+ld a,#12
+ld (#6b35),a
+ld hl,#0f2d
+ld (#6be4),hl
+ld hl,#5656
+ld (#6be6),hl
+ld hl,#cc6c
+ld (#6be8),hl
+ld a,#db
+ld (#7278),a
+ld hl,#f3db
+ld (#72d4),hl
+ld hl,#bf3f
+ld (#72d6),hl
+ld hl,#8b7b
+ld (#72d8),hl
+ld hl,#7003
+ld (#7333),hl
+ld a,#db
+ld (#7384),a
+ld a,#0b
+ld (#7386),a
+ld hl,#6404
+ld (#73e3),hl
+ld hl,#a929
+ld (#73e5),hl
+ld a,#bc
+ld (#73e7),a
+ld a,#3f
+ld (#7a76),a
+ld a,#e7
+ld (#7a78),a
+ld hl,#e74f
+ld (#7ad3),hl
+ld hl,#7fb7
+ld (#7ad5),hl
+ld hl,#e7bf
+ld (#7ad7),hl
+ld a,#8b
+ld (#7ad9),a
+ld hl,#2da9
+ld (#7b32),hl
+ld hl,#cfe7
+ld (#7b84),hl
+ld hl,#560f
+ld (#7b86),hl
+ret
+
+.closeEye2
+ld a,#f3
+ld (#4276),a
+ld a,#b7
+ld (#42d6),a
+ld hl,#4f7b
+ld (#42d8),hl
+ld hl,#dbcf
+ld (#4333),hl
+ld hl,#3fdb
+ld (#4335),hl
+ld hl,#f3bf
+ld (#4337),hl
+ld hl,#64cf
+ld (#4339),hl
+ld hl,#072c
+ld (#4392),hl
+ld hl,#db8f
+ld (#4394),hl
+ld hl,#208b
+ld (#4396),hl
+ld hl,#db6d
+ld (#43e3),hl
+ld hl,#8f8f
+ld (#43e5),hl
+ld a,#0b
+ld (#43e7),a
+ld hl,#0b03
+ld (#4445),hl
+ld a,#28
+ld (#4447),a
+ld a,#3f
+ld (#44a8),a
+ld a,#b7
+ld (#4a76),a
+ld a,#29
+ld (#4ad3),a
+ld hl,#6f7f
+ld (#4ad7),hl
+ld hl,#e74f
+ld (#4b33),hl
+ld hl,#7fb7
+ld (#4b35),hl
+ld hl,#e77b
+ld (#4b37),hl
+ld hl,#048b
+ld (#4b39),hl
+ld a,#4c
+ld (#4b92),a
+ld hl,#0bed
+ld (#4b94),hl
+ld hl,#e76d
+ld (#4be3),hl
+ld hl,#0fe7
+ld (#4be5),hl
+ld a,#56
+ld (#4be7),a
+ld hl,#cffb
+ld (#5277),hl
+ld hl,#3fdb
+ld (#52d5),hl
+ld hl,#db8f
+ld (#5333),hl
+ld hl,#3fdb
+ld (#5335),hl
+ld hl,#cfbf
+ld (#5337),hl
+ld hl,#1812
+ld (#5339),hl
+ld a,#24
+ld (#5392),a
+ld hl,#cf6d
+ld (#53e3),hl
+ld hl,#8f8f
+ld (#53e5),hl
+ld hl,#bc0b
+ld (#53e7),hl
+ld hl,#b7b7
+ld (#5a76),hl
+ld a,#9e
+ld (#5a79),a
+ld hl,#cf29
+ld (#5ad3),hl
+ld hl,#7fb7
+ld (#5ad5),hl
+ld hl,#e73f
+ld (#5ad7),hl
+ld hl,#e74f
+ld (#5b33),hl
+ld hl,#f7b7
+ld (#5b35),hl
+ld hl,#e77b
+ld (#5b37),hl
+ld a,#06
+ld (#5b39),a
+;ld a,#25
+;ld (#5b3b),a
+ld hl,#cf8d
+ld (#5be3),hl
+ld hl,#0fcf
+ld (#5be5),hl
+ld hl,#bc56
+ld (#5be7),hl
+ld a,#bf
+ld (#5dd3),a
+ld hl,#fbf3
+ld (#6276),hl
+ld hl,#3ff3
+ld (#62d5),hl
+ld hl,#7bbf
+ld (#62d7),hl
+ld hl,#0725
+ld (#6332),hl
+ld hl,#dbdb
+ld (#6334),hl
+ld hl,#fb3f
+ld (#6336),hl
+ld hl,#208b
+ld (#6338),hl
+ld a,#18
+ld (#633a),a
+ld a,#0b
+ld (#6386),a
+ld hl,#e7cf
+ld (#6399),hl
+ld hl,#8f1c
+ld (#63e3),hl
+ld hl,#8f8f
+ld (#63e5),hl
+ld hl,#b80b
+ld (#63e7),hl
+ld a,#8c
+ld (#63e9),a
+ld hl,#b7e7
+ld (#6a75),hl
+ld hl,#e7f7
+ld (#6a77),hl
+ld a,#8b
+ld (#6a79),a
+ld hl,#cf4f
+ld (#6ad3),hl
+ld hl,#7fb7
+ld (#6ad5),hl
+ld hl,#e7bf
+ld (#6ad7),hl
+ld a,#30
+ld (#6ada),a
+ld hl,#cf4f
+ld (#6b33),hl
+ld hl,#f7e7
+ld (#6b35),hl
+ld hl,#126f
+ld (#6b37),hl
+ld a,#04
+ld (#6b39),a
+;ld a,#25
+;ld (#6b3b),a
+ld a,#e7
+ld (#6b98),a
+ld hl,#4f4f
+ld (#6be4),hl
+ld hl,#560f
+ld (#6be6),hl
+ld hl,#cc6c
+ld (#6be8),hl
+ld hl,#dbbf
+ld (#7277),hl
+ld hl,#f3db
+ld (#72d4),hl
+ld hl,#bf3f
+ld (#72d6),hl
+ld hl,#cf7b
+ld (#72d8),hl
+ld hl,#072d
+ld (#7332),hl
+ld hl,#dbdb
+ld (#7334),hl
+ld hl,#8b3f
+ld (#7336),hl
+ld a,#20
+ld (#7338),a
+ld a,#07
+ld (#733b),a
+ld a,#db
+ld (#7384),a
+ld a,#0b
+ld (#7386),a
+ld a,#6f
+ld (#739b),a
+ld hl,#0704
+ld (#73e3),hl
+ld hl,#0b8f
+ld (#73e5),hl
+ld a,#0b
+ld (#73e7),a
+;ld a,#3f
+;ld (#7449),a
+ld a,#3f
+ld (#7a76),a
+ld a,#6f
+ld (#7a78),a
+ld hl,#e74f
+ld (#7ad3),hl
+ld hl,#7fb7
+ld (#7ad5),hl
+ld hl,#e7bf
+ld (#7ad7),hl
+ld a,#8b
+ld (#7ad9),a
+ld hl,#4f09
+ld (#7b32),hl
+ld hl,#e74f
+ld (#7b34),hl
+ld hl,#12e7
+ld (#7b36),hl
+ld a,#04
+ld (#7b38),a
+ld hl,#4f21
+ld (#7b3a),hl
+ld hl,#e7e7
+ld (#7b84),hl
+ld hl,#560f
+ld (#7b86),hl
+ld hl,#074f
+ld (#7be5),hl
+ld a,#16
+ld (#7be7),a
+ret
+
+.closeEye3
+ld a,#f3
+ld (#4276),a
+ld a,#b7
+ld (#42d6),a
+ld hl,#4fdb
+ld (#42d8),hl
+ld hl,#db4f
+ld (#4333),hl
+ld hl,#3ff3
+ld (#4335),hl
+ld hl,#7bff
+ld (#4337),hl
+ld hl,#4c8b
+ld (#4339),hl
+ld hl,#5c3c
+ld (#4392),hl
+ld hl,#343f
+ld (#4394),hl
+ld hl,#2487
+ld (#4396),hl
+ld hl,#db6d
+ld (#43e3),hl
+ld hl,#8f8f
+ld (#43e5),hl
+ld a,#0b
+ld (#43e7),a
+ld hl,#9b34
+ld (#4445),hl
+ld a,#88
+ld (#4447),a
+;ld a,#6f
+;ld (#44a8),a
+ld a,#b7
+ld (#4a76),a
+ld a,#29
+ld (#4ad3),a
+ld hl,#e7ff
+ld (#4ad7),hl
+ld hl,#e74f
+ld (#4b33),hl
+ld hl,#7fb7
+ld (#4b35),hl
+ld hl,#e7bf
+ld (#4b37),hl
+ld hl,#8c12
+ld (#4b39),hl
+ld a,#6c
+ld (#4b92),a
+ld hl,#6cad
+ld (#4b94),hl
+ld hl,#e76d
+ld (#4be3),hl
+ld hl,#0fcf
+ld (#4be5),hl
+ld a,#56
+ld (#4be7),a
+ld hl,#cf7b
+ld (#5277),hl
+ld hl,#3fdb
+ld (#52d5),hl
+ld a,#db
+ld (#52d8),a
+ld hl,#db4f
+ld (#5333),hl
+ld hl,#3ff3
+ld (#5335),hl
+ld hl,#8b7b
+ld (#5337),hl
+ld hl,#4c24
+ld (#5339),hl
+ld a,#30
+ld (#5392),a
+ld hl,#cf6d
+ld (#53e3),hl
+ld hl,#8f8f
+ld (#53e5),hl
+ld hl,#bc0b
+ld (#53e7),hl
+ld hl,#b7b7
+ld (#5a76),hl
+ld a,#9e
+ld (#5a79),a
+ld hl,#cf29
+ld (#5ad3),hl
+ld hl,#7fb7
+ld (#5ad5),hl
+ld hl,#e7bf
+ld (#5ad7),hl
+ld hl,#e74f
+ld (#5b33),hl
+ld hl,#b7b7
+ld (#5b35),hl
+ld hl,#748b
+ld (#5b37),hl
+ld a,#0c
+ld (#5b39),a
+ld a,#ad
+ld (#5b3b),a
+ld hl,#8f8d
+ld (#5be3),hl
+ld hl,#0fcf
+ld (#5be5),hl
+ld hl,#1656
+ld (#5be7),hl
+ld a,#ff
+ld (#5dd3),a
+ld hl,#7bf3
+ld (#6276),hl
+ld hl,#3ff3
+ld (#62d5),hl
+ld hl,#7bbf
+ld (#62d7),hl
+ld hl,#4721
+ld (#6332),hl
+ld hl,#dbdb
+ld (#6334),hl
+ld hl,#308b
+ld (#6336),hl
+ld hl,#4c98
+ld (#6338),hl
+ld a,#09
+ld (#633a),a
+ld a,#0b
+ld (#6386),a
+;ld hl,#f3db
+;ld (#6399),hl
+ld hl,#4f1c
+ld (#63e3),hl
+ld hl,#8b8f
+ld (#63e5),hl
+ld hl,#b8a9
+ld (#63e7),hl
+ld a,#8c
+ld (#63e9),a
+ld a,#ff
+ld (#65d3),a
+ld hl,#b7e7
+ld (#6a75),hl
+ld hl,#e7f7
+ld (#6a77),hl
+ld a,#8b
+ld (#6a79),a
+ld hl,#cf0f
+ld (#6ad3),hl
+ld hl,#7fb7
+ld (#6ad5),hl
+ld hl,#e7bf
+ld (#6ad7),hl
+ld a,#a3;ld hl,#12a3
+ld (#6ad9),a;hl
+ld hl,#cf07
+ld (#6b33),hl
+ld hl,#5b12
+ld (#6b35),hl
+ld hl,#6463
+ld (#6b37),hl
+ld a,#0c
+ld (#6b39),a
+ld a,#0f
+ld (#6b3b),a
+ld a,#b7
+;ld (#6b98),a
+;ld hl,#0f2d
+ld (#6be4),hl
+ld hl,#5656
+ld (#6be6),hl
+ld hl,#cc6c
+ld (#6be8),hl
+ld hl,#db3f
+ld (#7277),hl
+ld hl,#f3db
+ld (#72d4),hl
+ld hl,#bf3f
+ld (#72d6),hl
+ld hl,#8b7b
+ld (#72d8),hl
+ld hl,#033c
+ld (#7332),hl
+ld hl,#9370
+ld (#7334),hl
+ld hl,#3bf7
+ld (#7336),hl
+ld a,#8c
+ld (#7338),a
+ld a,#0f
+ld (#733b),a
+ld a,#db
+ld (#7384),a
+ld a,#0b
+ld (#7386),a
+;ld a,#7b
+;ld (#739b),a
+ld hl,#6404
+ld (#73e3),hl
+ld hl,#a929
+ld (#73e5),hl
+ld a,#bc
+ld (#73e7),a
+;ld a,#9f
+;ld (#7449),a
+ld a,#3f
+ld (#7a76),a
+ld a,#e7
+ld (#7a78),a
+ld hl,#e74f
+ld (#7ad3),hl
+ld hl,#7fb7
+ld (#7ad5),hl
+ld hl,#e7bf
+ld (#7ad7),hl
+ld a,#8b
+ld (#7ad9),a
+ld hl,#2da9
+ld (#7b32),hl
+ld hl,#69af
+ld (#7b34),hl
+ld hl,#3673
+ld (#7b36),hl
+ld a,#0c
+ld (#7b38),a
+ld hl,#4730
+ld (#7b3a),hl
+ld hl,#cfe7
+ld (#7b84),hl
+ld hl,#560f
+ld (#7b86),hl
+ld hl,#fb98
+ld (#7be5),hl
+ld a,#86
+ld (#7be7),a
+ret
+
+.closeEye4
+ld a,#db
+ld (#4276),a
+ld a,#9f
+ld (#42d6),a
+ld hl,#0fcf
+ld (#42d8),hl
+ld hl,#ec47
+ld (#4333),hl
+ld hl,#0008
+ld (#4335),hl
+ld hl,#0404
+ld (#4337),hl
+ld a,#4c
+ld (#4339),a
+ld a,#38
+ld (#4392),a
+ld hl,#6c29
+ld (#43e3),hl
+ld hl,#4c08
+ld (#43e5),hl
+ld a,#29
+ld (#43e7),a
+ld a,#f3
+ld (#4a76),a
+ld a,#03
+ld (#4ad3),a
+ld hl,#8c07
+ld (#4b33),hl
+ld hl,#0800
+ld (#4b35),hl
+ld hl,#4c08
+ld (#4b37),hl
+ld a,#0c
+ld (#4b39),a
+ld hl,#0830
+ld (#4be3),hl
+ld hl,#0400
+ld (#4be5),hl
+ld a,#9c
+ld (#4be7),a
+ld a,#e7
+ld (#5278),a
+ld hl,#bf9f
+ld (#52d5),hl
+ld a,#7b
+ld (#52d8),a
+ld hl,#0c16
+ld (#5333),hl
+ld hl,#0404
+ld (#5335),hl
+ld hl,#1804
+ld (#5337),hl
+ld a,#0c
+ld (#5339),a
+ld hl,#048c
+ld (#53e3),hl
+ld hl,#0000
+ld (#53e5),hl
+ld hl,#3c4c
+ld (#53e7),hl
+ld hl,#3ff3
+ld (#5a76),hl
+ld a,#1e
+ld (#5a79),a
+ld hl,#db03
+ld (#5ad3),hl
+ld hl,#8b3f
+ld (#5ad5),hl
+ld hl,#6f07
+ld (#5ad7),hl
+ld hl,#4c46
+ld (#5b33),hl
+ld hl,#4c4c
+ld (#5b35),hl
+ld hl,#540c
+ld (#5b37),hl
+ld hl,#0808
+ld (#5be3),hl
+ld hl,#0808
+ld (#5be5),hl
+ld hl,#9c04
+ld (#5be7),hl
+ld hl,#3f9f
+ld (#6276),hl
+ld hl,#388b
+ld (#62d5),hl
+ld hl,#f930
+ld (#62d7),hl
+ld hl,#ce2c
+ld (#6333),hl
+ld hl,#c98c
+ld (#6335),hl
+ld a,#98
+ld (#6337),a
+ld a,#0f
+ld (#6386),a
+ld hl,#8c04
+ld (#63e3),hl
+ld hl,#048c
+ld (#63e5),hl
+ld hl,#1804
+ld (#63e7),hl
+ld a,#2c
+ld (#63e9),a
+ld a,#bf
+ld (#65d3),a
+ld hl,#f3f3
+ld (#6a75),hl
+ld hl,#a77f
+ld (#6a77),hl
+ld a,#0b
+ld (#6a79),a
+ld hl,#db07
+ld (#6ad3),hl
+ld hl,#8c12
+ld (#6ad5),hl
+ld hl,#9c04
+ld (#6ad7),hl
+ld a,#e7
+ld (#6ad9),a
+ld hl,#6e9c
+ld (#6b33),hl
+ld a,#6c
+ld (#6b35),a
+ld hl,#441c
+ld (#6be4),hl
+ld hl,#8cf8
+ld (#6be6),hl
+ld hl,#648c
+ld (#6be8),hl
+ld a,#e7
+ld (#7278),a
+ld hl,#648b
+ld (#72d4),hl
+ld hl,#0008
+ld (#72d6),hl
+ld hl,#f94c
+ld (#72d8),hl
+ld hl,#fa09
+ld (#7333),hl
+ld a,#7b
+ld (#7384),a
+ld a,#0f
+ld (#7386),a
+ld hl,#2100
+ld (#73e3),hl
+ld hl,#b3cc
+ld (#73e5),hl
+ld a,#24
+ld (#73e7),a
+ld a,#7b
+ld (#7a76),a
+ld a,#a7
+ld (#7a78),a
+ld hl,#1a47
+ld (#7ad3),hl
+ld hl,#008c
+ld (#7ad5),hl
+ld hl,#0400
+ld (#7ad7),hl
+ld a,#dc
+ld (#7ad9),a
+ld hl,#0db8
+ld (#7b32),hl
+ld hl,#168f
+ld (#7b84),hl
+ld hl,#5e29
+ld (#7b86),hl
+ret
+
+; ***********
+; Beauty Part
+; ***********
+
+.closeEyeBeauty1
+ld hl,#16d0
+ld (#41f2),hl
+ld a,#ce
+ld (#4994),a
+ld hl,#a13b
+ld (#49f2),hl
+ld a,#38
+ld (#49f4),a
+ld hl,#3872
+ld (#51f3),hl
+ld a,#06
+ld (#51f7),a
+ld a,#09
+ld (#5992),a
+ld hl,#e0a1
+ld (#59f6),hl
+ld a,#06
+ld (#6193),a
+ld a,#f0
+ld (#61f6),a
+ld hl,#6981
+ld (#6992),hl
+ld a,#ce
+ld (#69f4),a
+ld hl,#2116
+ld (#7192),hl
+ld a,#a1
+ld (#7194),a
+ld hl,#3ca1
+ld (#7992),hl
+ld a,#52
+ld (#7994),a
+ld a,#9a
+ld (#79f5),a
+ret
+
+.closeEyeBeauty2
+ld hl,#2929
+ld (#41f2),hl
+ld hl,#0303
+ld (#49f2),hl
+ld hl,#f0f0
+ld (#51f2),hl
+ld a,#b4
+ld (#61f6),a
+ld a,#c4
+ld (#6992),a
+ld hl,#0658
+ld (#69f6),hl
+ld hl,#29b0
+ld (#7192),hl
+ld a,#a1
+ld (#71f6),a
+ld hl,#1616
+ld (#7992),hl
+ret
+
+.closeEyeBeauty3
+ld hl,#16d0
+ld (#41f2),hl
+ld hl,#a13b
+ld (#49f2),hl
+ld hl,#7287
+ld (#51f2),hl
+ld a,#f0
+ld (#61f6),a
+ld a,#81
+ld (#6992),a
+ld hl,#a40d
+ld (#69f6),hl
+ld hl,#2116
+ld (#7192),hl
+ld a,#b5
+ld (#71f6),a
+ld hl,#3ca1
+ld (#7992),hl
+ret
+
+.closeEyeBeauty4
+ld hl,#a1e1
+ld (#41f2),hl
+ld a,#cc
+ld (#4994),a
+ld hl,#c37e
+ld (#49f2),hl
+ld a,#30
+ld (#49f4),a
+ld hl,#3063
+ld (#51f3),hl
+ld a,#a4
+ld (#51f7),a
+ld a,#18
+ld (#5992),a
+ld hl,#c0a4
+ld (#59f6),hl
+ld a,#2c
+ld (#6193),a
+ld a,#49
+ld (#61f6),a
+ld hl,#43d0
+ld (#6992),hl
+ld a,#cc
+ld (#69f4),a
+ld hl,#b484
+ld (#7192),hl
+ld a,#f0
+ld (#7194),a
+ld hl,#a148
+ld (#7992),hl
+ld a,#29
+ld (#7994),a
+ld a,#98
+ld (#79f5),a
+ret

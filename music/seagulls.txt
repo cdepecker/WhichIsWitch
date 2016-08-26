@@ -1,0 +1,293 @@
+#############
+# Input Log #
+#############
++ VBL = 0x2E81 (~238 seconds)
++ Number of DigiDrum = 0
++ Frequency = 2000000 Hz
++ Player Frequency = 50 Hz
++ Loop VBL = 0
++ Attributes = 0x1
+  - YM file is interleaved
+  - Digidrums are unsigned
+  - Digidrums resolution is 8bits
+  - Loop mode OFF
+  - Time Control OFF
++ Song Name = seagulls
++ Author = TAO of ACF
++ Comments = Converted by Leonard
+Offset reg 0: 75
+Offset reg 1: 11980
+Offset reg 2: 23885
+Offset reg 3: 35790
+Offset reg 4: 47695
+Offset reg 5: 59600
+Offset reg 6: 71505
+Offset reg 7: 83410
+Offset reg 8: 95315
+Offset reg 9: 107220
+Offset reg 10: 119125
+Offset reg 11: 131030
+Offset reg 12: 142935
+Offset reg 13: 154840
+Offset reg 14: 166745
+Offset reg 15: 178650
++ SpecialFX
+  - Sid Voices
++ File Informations
+  - Frames : 11905
+  - Time : 238 secondes.
++ File Type = YM6!
+
+##############
+# Output Log #
+##############
+Channel 0 FXs Min Rate : 122.0
+Channel 0 FXs Max Rate : 1241.0
+Channel 1 FXs Min Rate : 1000000.0
+Channel 1 FXs Max Rate : 0.0
+Channel 2 FXs Min Rate : 122.0
+Channel 2 FXs Max Rate : 2100.0
++ Process Register 0
+  - BufferSize : 0x100 bytes
+  - New Size : 2283 bytes
+  - Compression ratio ~ 19.176817 %
+  ! Nb Flags : 178
+  ! Nb PreviousSeq : 678
+  ! Nb Chars : 748
+  ! Nb CharsInPreviousSeq : 11157
+  - BufferSize : 0x400 bytes
+  - New Size : 918 bytes
+  - Compression ratio ~ 7.7110457 %
+  ! Nb Flags : 62
+  ! Nb PreviousSeq : 175
+  ! Nb Chars : 330
+  ! Nb CharsInPreviousSeq : 11575
++ Process Register 1
+  - BufferSize : 0x100 bytes
+  - New Size : 957 bytes
+  - Compression ratio ~ 8.038639 %
+  ! Nb Flags : 60
+  ! Nb PreviousSeq : 407
+  ! Nb Chars : 82
+  ! Nb CharsInPreviousSeq : 11823
+  - BufferSize : 0x400 bytes
+  - New Size : 423 bytes
+  - Compression ratio ~ 3.553129 %
+  ! Nb Flags : 21
+  ! Nb PreviousSeq : 114
+  ! Nb Chars : 59
+  ! Nb CharsInPreviousSeq : 11846
++ Process Register 2
+  - BufferSize : 0x100 bytes
+  - New Size : 806 bytes
+  - Compression ratio ~ 6.7702646 %
+  ! Nb Flags : 61
+  ! Nb PreviousSeq : 254
+  ! Nb Chars : 236
+  ! Nb CharsInPreviousSeq : 11669
+  - BufferSize : 0x400 bytes
+  - New Size : 299 bytes
+  - Compression ratio ~ 2.5115497 %
+  ! Nb Flags : 14
+  ! Nb PreviousSeq : 84
+  ! Nb Chars : 32
+  ! Nb CharsInPreviousSeq : 11873
++ Process Register 3
+  - BufferSize : 0x100 bytes
+  - New Size : 380 bytes
+  - Compression ratio ~ 3.1919363 %
+  ! Nb Flags : 24
+  ! Nb PreviousSeq : 161
+  ! Nb Chars : 33
+  ! Nb CharsInPreviousSeq : 11872
+  - BufferSize : 0x400 bytes
+  - New Size : 250 bytes
+  - Compression ratio ~ 2.099958 %
+  ! Nb Flags : 11
+  ! Nb PreviousSeq : 74
+  ! Nb Chars : 16
+  ! Nb CharsInPreviousSeq : 11889
++ Process Register 4
+  - BufferSize : 0x100 bytes
+  - New Size : 2863 bytes
+  - Compression ratio ~ 24.04872 %
+  ! Nb Flags : 236
+  ! Nb PreviousSeq : 734
+  ! Nb Chars : 1158
+  ! Nb CharsInPreviousSeq : 10747
+  - BufferSize : 0x400 bytes
+  - New Size : 1949 bytes
+  - Compression ratio ~ 16.371273 %
+  ! Nb Flags : 128
+  ! Nb PreviousSeq : 396
+  ! Nb Chars : 632
+  ! Nb CharsInPreviousSeq : 11273
++ Process Register 5
+  - BufferSize : 0x100 bytes
+  - New Size : 291 bytes
+  - Compression ratio ~ 2.4443512 %
+  ! Nb Flags : 18
+  ! Nb PreviousSeq : 122
+  ! Nb Chars : 28
+  ! Nb CharsInPreviousSeq : 11877
+  - BufferSize : 0x400 bytes
+  - New Size : 269 bytes
+  - Compression ratio ~ 2.2595549 %
+  ! Nb Flags : 11
+  ! Nb PreviousSeq : 80
+  ! Nb Chars : 17
+  ! Nb CharsInPreviousSeq : 11888
++ Process Register 6
+  - BufferSize : 0x100 bytes
+  - New Size : 164 bytes
+  - Compression ratio ~ 1.3775724 %
+  ! Nb Flags : 9
+  ! Nb PreviousSeq : 75
+  ! Nb Chars : 4
+  ! Nb CharsInPreviousSeq : 11901
+  - BufferSize : 0x400 bytes
+  - New Size : 179 bytes
+  - Compression ratio ~ 1.50357 %
+  ! Nb Flags : 7
+  ! Nb PreviousSeq : 55
+  ! Nb Chars : 6
+  ! Nb CharsInPreviousSeq : 11899
++ Process Register 7
+  - BufferSize : 0x100 bytes
+  - New Size : 265 bytes
+  - Compression ratio ~ 2.2259555 %
+  ! Nb Flags : 16
+  ! Nb PreviousSeq : 116
+  ! Nb Chars : 16
+  ! Nb CharsInPreviousSeq : 11889
+  - BufferSize : 0x400 bytes
+  - New Size : 254 bytes
+  - Compression ratio ~ 2.1335573 %
+  ! Nb Flags : 11
+  ! Nb PreviousSeq : 74
+  ! Nb Chars : 20
+  ! Nb CharsInPreviousSeq : 11885
++ Process Register 8
+  - BufferSize : 0x100 bytes
+  - New Size : 488 bytes
+  - Compression ratio ~ 4.099118 %
+  ! Nb Flags : 31
+  ! Nb PreviousSeq : 204
+  ! Nb Chars : 48
+  ! Nb CharsInPreviousSeq : 11857
+  - BufferSize : 0x400 bytes
+  - New Size : 377 bytes
+  - Compression ratio ~ 3.1667366 %
+  ! Nb Flags : 19
+  ! Nb PreviousSeq : 101
+  ! Nb Chars : 54
+  ! Nb CharsInPreviousSeq : 11851
++ Process Register 9
+  - BufferSize : 0x100 bytes
+  - New Size : 105 bytes
+  - Compression ratio ~ 0.8819824 %
+  ! Nb Flags : 6
+  ! Nb PreviousSeq : 48
+  ! Nb Chars : 2
+  ! Nb CharsInPreviousSeq : 11903
+  - BufferSize : 0x400 bytes
+  - New Size : 153 bytes
+  - Compression ratio ~ 1.2851743 %
+  ! Nb Flags : 6
+  ! Nb PreviousSeq : 48
+  ! Nb Chars : 2
+  ! Nb CharsInPreviousSeq : 11903
++ Process Register 10
+  - BufferSize : 0x100 bytes
+  - New Size : 566 bytes
+  - Compression ratio ~ 4.754305 %
+  ! Nb Flags : 35
+  ! Nb PreviousSeq : 246
+  ! Nb Chars : 38
+  ! Nb CharsInPreviousSeq : 11867
+  - BufferSize : 0x400 bytes
+  - New Size : 464 bytes
+  - Compression ratio ~ 3.897522 %
+  ! Nb Flags : 20
+  ! Nb PreviousSeq : 138
+  ! Nb Chars : 29
+  ! Nb CharsInPreviousSeq : 11876
++ Process Register 11
+  - BufferSize : 0x100 bytes
+  - New Size : 710 bytes
+  - Compression ratio ~ 5.9638805 %
+  ! Nb Flags : 50
+  ! Nb PreviousSeq : 254
+  ! Nb Chars : 151
+  ! Nb CharsInPreviousSeq : 11754
+  - BufferSize : 0x400 bytes
+  - New Size : 277 bytes
+  - Compression ratio ~ 2.3267534 %
+  ! Nb Flags : 11
+  ! Nb PreviousSeq : 84
+  ! Nb Chars : 13
+  ! Nb CharsInPreviousSeq : 11892
++ Process Register 12
+  - BufferSize : 0x100 bytes
+  - New Size : 101 bytes
+  - Compression ratio ~ 0.848383 %
+  ! Nb Flags : 5
+  ! Nb PreviousSeq : 47
+  ! Nb Chars : 1
+  ! Nb CharsInPreviousSeq : 11904
+  - BufferSize : 0x400 bytes
+  - New Size : 148 bytes
+  - Compression ratio ~ 1.2431751 %
+  ! Nb Flags : 5
+  ! Nb PreviousSeq : 47
+  ! Nb Chars : 1
+  ! Nb CharsInPreviousSeq : 11904
++ Process Register 13
+  - BufferSize : 0x100 bytes
+  - New Size : 102 bytes
+  - Compression ratio ~ 0.85678285 %
+  ! Nb Flags : 5
+  ! Nb PreviousSeq : 47
+  ! Nb Chars : 2
+  ! Nb CharsInPreviousSeq : 11903
+  - BufferSize : 0x400 bytes
+  - New Size : 149 bytes
+  - Compression ratio ~ 1.251575 %
+  ! Nb Flags : 5
+  ! Nb PreviousSeq : 47
+  ! Nb Chars : 2
+  ! Nb CharsInPreviousSeq : 11903
++ Process Register 14
+  - BufferSize : 0x100 bytes
+  - New Size : 2811 bytes
+  - Compression ratio ~ 23.611927 %
+  ! Nb Flags : 228
+  ! Nb PreviousSeq : 755
+  ! Nb Chars : 1072
+  ! Nb CharsInPreviousSeq : 10833
+  - BufferSize : 0x400 bytes
+  - New Size : 1915 bytes
+  - Compression ratio ~ 16.085678 %
+  ! Nb Flags : 125
+  ! Nb PreviousSeq : 390
+  ! Nb Chars : 619
+  ! Nb CharsInPreviousSeq : 11286
++ Process Register 15
+  - BufferSize : 0x100 bytes
+  - New Size : 750 bytes
+  - Compression ratio ~ 6.299874 %
+  ! Nb Flags : 63
+  ! Nb PreviousSeq : 179
+  ! Nb Chars : 328
+  ! Nb CharsInPreviousSeq : 11577
+  - BufferSize : 0x400 bytes
+  - New Size : 688 bytes
+  - Compression ratio ~ 5.779084 %
+  ! Nb Flags : 47
+  ! Nb PreviousSeq : 129
+  ! Nb Chars : 253
+  ! Nb CharsInPreviousSeq : 11652
++ Total Raw Size = 190480 bytes
++ Total Compressed Size = 10467 bytes
++ Compression ratio ~ 5.495065 %
++ Buffer size needed during decrunching : 0x1900
