@@ -22,7 +22,7 @@ The "run Address" keyword in WinApe assembler does a "CALL Address" rather than 
 Then, a "run Address" actually pushes the return address in the stack and so corrupts the code you have just built.
 In order to overcome that, I added a breakpoint in the "main.asm" file just after the stack pointer initialization to a safer place.
 And so, what you have to do to properly build/execute the demo is :
-1 - Load the "main.asm" file in the WinApe Assembler
-2 - Build and Run it (Using "F9"), you will be blocked at the breakpoint (just after the stack pointer initialization)
-3 - Rebuild and Run it (go back to the "main.asm" page in the Assembler and  click "F9"), once again you will be blocked by the breakpoint
-4 - From this point, the demo is correctly built, you can just continue the execution and enjoy it.
+- Load the "main.asm" file in the WinApe Assembler
+- Build and Run it (Using "F9"), you will be blocked at the breakpoint (just after the stack pointer initialization)
+- Rebuild and Run it (go back to the "main.asm" page in the Assembler and  click "F9"), once again you will be blocked by the breakpoint
+- From this point, the demo is correctly built, you can just continue the execution and enjoy it.
